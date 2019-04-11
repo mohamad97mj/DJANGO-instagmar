@@ -1,0 +1,100 @@
+.bg-light{
+    background-color:rgb(250, 250, 250)
+}
+
+.bg-white{
+    background-color:rgb(255, 255, 255)
+
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+}
+
+
+.center{
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    float:left;
+    transform: translate(-50%, -50%);
+}
+
+.height-center{
+
+    position:absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+
+}
+
+.width-center{
+    position:absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+
+#i1{
+    position:absolute;
+    right:-30px;
+    height:600px;
+    width:450px;
+}
+
+#i2{
+    position:absolute;
+    margin-left:20px;
+    top:100px;
+    padding:45px 72px 45px;
+}
+
+#f1{
+    position:absolute;
+    left:20px;
+    height:300px;
+    width:325px;
+    padding-left:25px;
+    padding-right:25px;
+
+}
+
+
+
+inner-container{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+@media screen and (max-width:750px) {
+  .right {
+       width:100%;
+  }
+
+  .inner-container{
+    width: 50%;
+    left : 50%;
+    transform: translate(-50%, 0%);
+
+  }
+
+}
