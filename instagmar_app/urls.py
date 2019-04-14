@@ -4,5 +4,6 @@ from . import views
 app_name = 'instagmar_app'
 
 urlpatterns = [
-    path('', views.loginview, name="login_view"),
+    path('', views.signupview, name="signupview"),
+    path('login', views.loginview, name="loginview")
 ]

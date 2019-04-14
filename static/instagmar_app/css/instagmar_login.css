@@ -1,19 +1,36 @@
-.bg-light{
-    background-color:rgb(250, 250, 250)
+
+img {vertical-align: middle;}
+
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 4s;
+  animation-name: fade;
+  animation-duration: 4s;
 }
 
-.bg-white{
-    background-color:rgb(255, 255, 255)
-
+@-webkit-keyframes fade {
+  from {opacity: .3}
+  to {opacity: 1}
 }
+
+@keyframes fade {
+  from {opacity: .3}
+  to {opacity: 1}
+}
+
+.slide {
+    display: none;
+}
+
+/* ... */
 
 .split {
   height: 100%;
   width: 50%;
-  position: fixed;
-  z-index: 1;
+  position: absolute;
   top: 0;
-  overflow-x: hidden;
   padding-top: 20px;
 }
 
@@ -32,11 +49,10 @@
     position:absolute;
     left: 50%;
     top: 50%;
-    float:left;
     transform: translate(-50%, -50%);
 }
 
-.height-center{
+.vertical-center{
 
     position:absolute;
     top: 50%;
@@ -44,48 +60,17 @@
 
 }
 
-.width-center{
+.horizontal-center{
     position:absolute;
     left: 50%;
     transform: translate(-50%, 0%);
 }
 
-
-#i1{
-    position:absolute;
-    right:-30px;
-    height:600px;
-    width:450px;
+.inner-container{
+    position: absolute;
 }
 
-#i2{
-    position:absolute;
-    margin-left:20px;
-    top:100px;
-    padding:45px 72px 45px;
-}
-
-#f1{
-    position:absolute;
-    left:20px;
-    height:300px;
-    width:325px;
-    padding-left:25px;
-    padding-right:25px;
-
-}
-
-
-
-inner-container{
-    position:absolute;
-    width: 100%;
-    height: 100%;
-}
-
-
-
-@media screen and (max-width:750px) {
+@media screen and (max-width:850px) {
   .right {
        width:100%;
   }
@@ -96,5 +81,4 @@ inner-container{
     transform: translate(-50%, 0%);
 
   }
-
 }

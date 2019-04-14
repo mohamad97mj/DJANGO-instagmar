@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="{% static 'instagmar_app/css/instagmar_login.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+
+<body>
+
+<div class="bg-light" style="position: absolute; width: 100%; height:100%;">
+    <div class="center" style="width: 350px; height:650px; margin-top: 25px;">
+        <div class="bg-white border" style="height:365px;">
+            <div class="bg-white" style="height:100px;">
+                <img src="{% static 'instagmar_app/images/login_images/app-name.PNG' %}"
+                     class="bg-white" style="width:100%; height:85px; padding:0 65px">
+            </div>
+
+            <div style="padding: 0 35px;">
+
+                <form class="bg-white">
+
+                    {% csrf_token %}
+                    {% for field in login_form.visible_fields %}
+                    <div class="form-group">
+                        {{ field|add_class:'form-control' }}
+                    </div>
+                    {% endfor %}
+                    <input type="submit" class="btn btn-primary btn-block border" value="Log In">
+
+                </form>
+            </div>
+
+            <div style="padding: 0 35px; margin-top:30px">
+                <pre class="border:none">           Forgot password?</pre>
+            </div>
+        </div>
+
+        <div class="border bg-white" style="margin-top: 10px; height:65px;">
+
+            <pre style="border:none; padding:20px 0;"><span class="text-muted">          Don't have account?</span><a href="{% url 'instagmar_app:signupview' %}"><b>Sign up</b></a></pre>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
