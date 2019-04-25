@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'instagmar_app',
     'widget_tweaks',
+
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,8 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_URL = '/static/'
+LOGIN_URL = '/instagmar_app/loginview'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)

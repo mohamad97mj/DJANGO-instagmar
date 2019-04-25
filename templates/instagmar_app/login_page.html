@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <link rel="stylesheet" href="{% static 'instagmar_app/css/instagmar_login.css' %}">
+    <link rel="stylesheet" href="{% static 'instagmar_app/css/style.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -17,16 +17,16 @@
 <body>
 
 <div class="bg-light" style="position: absolute; width: 100%; height:100%;">
-    <div class="center" style="width: 350px; height:650px; margin-top: 25px;">
+    <div class="center-block" style="width: 350px; height:650px; margin-top: 25px;">
         <div class="bg-white border" style="height:365px;">
             <div class="bg-white" style="height:100px;">
-                <img src="{% static 'instagmar_app/images/login_images/app-name.PNG' %}"
+                <img src="{% static 'instagmar_app/images/global_icons/app-name.PNG' %}"
                      class="bg-white" style="width:100%; height:85px; padding:0 65px">
             </div>
 
             <div style="padding: 0 35px;">
 
-                <form class="bg-white">
+                <form class="bg-white" enctype="multipart/form-data" method="post">
 
                     {% csrf_token %}
                     {% for field in login_form.visible_fields %}

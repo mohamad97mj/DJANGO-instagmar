@@ -1,0 +1,122 @@
+/*.centerter {*/
+/*    position: absolute;*/
+/*    left: 50%;*/
+/*    top: 50%;*/
+/*    transform: translate(-50%, -50%);*/
+/*}*/
+
+
+.center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.no-space{
+    margin: -15px;
+}
+
+.horizontal-center-content {
+    /*use bootstrap text-center class*/
+}
+
+.center-block {
+    /*center block elements*/
+    margin: auto;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+.full-size {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.full-height {
+    height: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.full-width {
+    width: 100%;
+    padding-right: 0;
+    padding-right: 0;
+}
+
+.split {
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    top: 0;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+
+.hello {
+    width: 50px;
+}
+
+
+.inner-container {
+    position: absolute;
+}
+
+@media screen and (max-width: 850px) {
+    .right {
+        width: 100%;
+    }
+
+    .inner-container {
+        width: 50%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+
+    }
+}
+
+
+/*animation*/
+.slide {
+    display: none;
+}
+
+
+.my-fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}

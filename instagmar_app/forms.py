@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.models import User
 from django.core import validators
 from .models import UserModel
 
@@ -11,11 +12,11 @@ class SignUpForm(forms.ModelForm):
 
     class Meta:
         model = UserModel
-        fields = '__all__'
+        fields = ('email', 'fullname', 'username', 'password')
 
 
 class LoginForm(forms.Form):
 
-    username_or_email = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username or Email'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
 
