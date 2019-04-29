@@ -6,5 +6,13 @@
 </head>
 <body>
 
+<div>hello</div>
+
+<div>{{this_user.username}}</div>
+
+{% for following in this_user.followings.all %}
+<div class="bg-warning">{{ following.username }}</div>
+{% endfor %}
+
 </body>
 </html>

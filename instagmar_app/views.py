@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from . import forms
+from . import models
+
+from django.utils import timezone
 
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
-# Create your views here.
-from django.contrib.auth.models import User
 
 
 def signupview(request):
@@ -31,9 +32,22 @@ def signupview(request):
     return render(request, 'instagmar_app/signup_page.html', context=context)
 
 
+def getthisuser(request):
+    username = request.session.get('username')
+    this_user = models.MyUser.objects.get(username=username)
+    return this_user
+
+
 @login_required
-def homeview(request):
-    return render(request, 'instagmar_app/home_base.html', context={})
+def mainview(request):
+    this_user = getthisuser(request)
+    post_set = this_user.post_set.order_by('date')
+    context = {'this_user': this_user, 'post_set': post_set}
+    return render(request, 'instagmar_app/instagmar_page.html', context=context)
+
+
+def baseview(request):
+    return render(request, 'instagmar_pp/base.html', context={})
 
 
 def testview(request):
@@ -53,7 +67,8 @@ def loginview(request):
 
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('instagmar_app:homeview'))
+                request.session['username'] = user.username
+                return HttpResponseRedirect(reverse('instagmar_app:mainview'))
 
             else:
                 return HttpResponse("account not activate")
@@ -73,5 +88,24 @@ def logoutview(request):
     return HttpResponseRedirect(reverse('instagmar_app:signupview'))
 
 
+@login_required
 def postsview(request):
-    return render(request, 'instagmar_app/posts_page.html', context={})
+    this_user = getthisuser(request)
+    context = {'this_user': this_user}
+    return render(request, 'instagmar_app/posts_page.html', context=context)
+
+
+@login_required
+def newpostview(request):
+    if request.method == 'POST':
+        this_user = getthisuser(request)
+        content = request.FILES['content']
+        caption = request.POST['caption']
+        newpost = models.Post(user=this_user, content=content, caption=caption, date=timezone.now())
+        newpost.save()
+
+        return HttpResponseRedirect(reverse('instagmar_app:mainview'))
+
+    else:
+        form = forms.PostForm()
+        return render(request, 'instagmar_app/newpost_page.html', context={"form": form})

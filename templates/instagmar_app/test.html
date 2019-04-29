@@ -60,55 +60,17 @@
     }
 </style>
 
-<div id="header">
-    <h1>Header</h1>
-</div>
-<div id="content">
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-    <p>scrolling content</p>
-</div>
-<div id="footer">
-    <p>footer</p>
-</div>
+<di class="row">
+
+    {% for i in range(9) %}
+    {% if i>3 and i<6 %}
+    <div class="col-3" style="height: 100px; background-color: blue"></div>
+    {% else %}
+    <div class="col-3" style="height: 100px; background-color: red"></div>
+    {% endif %}
+    {% endfor %}
+
+
+</di>
 </body>
 </html>

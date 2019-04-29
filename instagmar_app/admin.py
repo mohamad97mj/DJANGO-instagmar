@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import UserModel
+from . import models
 
 # Register your models here.
 
-admin.site.register(UserModel)
+admin.site.register(models.MyUser)
+admin.site.register(models.Post)

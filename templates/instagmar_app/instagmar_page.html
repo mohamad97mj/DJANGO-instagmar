@@ -1,0 +1,107 @@
+{% extends "instagmar_app/base.html" %}
+{% load staticfiles %}
+{% block title %}home{% endblock %}
+{% block content %}
+{% block username %}
+<div>{{this_user.username}}</div>{% endblock %}
+
+<div class="center-content full-size bg-white" style="overflow: auto;">
+
+
+    <!--            content-->
+    <div class="full-height" style="width: 711px;">
+        <!--            content-container-->
+        <div class="bg-white full-width no-gutters" style="margin-top: 50px; height: 200px ">
+            <!--                top-content    -->
+            <div class="row full-width no-gutters" style="height: 80px">
+                <div class="col-2 gutters">
+                    <div class="center-content full-size">
+                        <img src="{% static 'instagmar_app/images/home_images/empty-profile.PNG' %}"
+                             style="height: 75px; width: 75px;">
+                    </div>
+                </div>
+
+                <div class="col-10 no-gutters">
+
+                    <div class="row full-width no-gutters" style="height: 50px; padding: 4px">
+                        <div class="col">
+                            <p class="text-center" style="height: 5px;"><b>0</b></p>
+                            <p class="text-center text-muted" style="height: 5px; font-size: 11px">posts</p>
+                        </div>
+
+                        <div class="col">
+                            <p class="text-center" style="height: 5px;"><b>0</b></p>
+                            <p class="text-center text-muted" style="height: 5px; font-size: 11px">flowers</p>
+                        </div>
+
+                        <div class="col">
+                            <p class="text-center" style="height: 5px;"><b>0</b></p>
+                            <p class="text-center text-muted" style="height: 5px; font-size: 11px">following</p>
+                        </div>
+                    </div>
+
+                    <div class="row full-width no-gutters" style="height: 30px">
+                        <div class="col-11" style="">
+                            <div class="border rounded center-content"
+                                 style="width: 99%; height: 99%;font-size: 12px; text-align: center">
+                                <b>Edit profile</b>
+                            </div>
+
+                        </div>
+
+                        <div class="col-1 center-content" style="">
+
+                            <div class="border rounded center-content" style="width: 99%; height: 99%;">
+                                <!-- The Modal -->
+                                <div class="full-size center-content">
+                                    <img data-toggle="modal" data-target="#myModal"
+                                         src="{% static 'instagmar_app/images/home_images/menu.png' %}"
+                                         style="width: 20px; height: 20px;">
+                                </div>
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+
+                                            <div class="modal-body">
+                                                <ul>
+                                                    <ui>
+                                                        <a href="{% url 'instagmar_app:logoutview' %}">logout</a>
+                                                    </ui>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="full-width">
+                <p>bio</p>
+                <p>name</p>
+                <p>site</p>
+            </div>
+        </div>
+        <div class="row bg-white" style="height: 400px">
+
+
+            <!--                                        bottom-content-->
+
+            {% for post in post_set %}
+            <div class="col-4" style="height: 237px;"><img class="full-size" src="{{ post.content.url }}"></div>
+            {% endfor %}
+            <div></div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+

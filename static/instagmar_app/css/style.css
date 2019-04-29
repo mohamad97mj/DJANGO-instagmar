@@ -13,7 +13,7 @@
 
 }
 
-.no-space{
+.no-space {
     margin: -15px;
 }
 
@@ -70,7 +70,6 @@ html, body {
 .hello {
     width: 50px;
 }
-
 
 .inner-container {
     position: absolute;

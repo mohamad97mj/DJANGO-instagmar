@@ -5,26 +5,29 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class UserModel(User):
+class MyUser(User):
     fullname = models.CharField(max_length=50)
+    followings = models.ManyToManyField('MyUser', related_name='followers')
 
     def __str__(self):
         return self.fullname
 
 
-class PostModel(models.Model):
-    content = models.ImageField()
+class Post(models.Model):
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    date = models.DateField()
+    content = models.ImageField(upload_to='instagmar_app')
     caption = models.TextField()
 
 
-class CommentModel(models.Model):
+class Comment(models.Model):
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     content = models.TextField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField()
-    related_post = models.ForeignKey(PostModel, on_delete=models.CASCADE)
+    related_post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
 
-class LikeModel(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class Like(models.Model):
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     date = models.DateField()
-    related_post = models.ForeignKey(PostModel, on_delete=models.CASCADE)
+    related_post = models.ForeignKey(Post, on_delete=models.CASCADE)
