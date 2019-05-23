@@ -34,14 +34,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+    'instagmar_app',
+    'widget_tweaks',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'instagmar_app',
-    'widget_tweaks',
 
 ]
 
@@ -72,6 +73,20 @@ TEMPLATES = [
         },
     },
 ]
+
+
+ASGI_APPLICATION = 'instagmar_pro.routing.application'
+
+redis_host = os.environ.get('REDIS_HOST', 'localhost')
+CHANNEL_LAYER = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "host": [(redis_host, 6379)]
+        },
+        "ROUTING": "instagmar_app.routing.channel_routing",
+    }
+}
 
 WSGI_APPLICATION = 'instagmar_pro.wsgi.application'
 
@@ -136,4 +151,5 @@ MEDIA_ROOT = MEDIA_DIR
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
+
 

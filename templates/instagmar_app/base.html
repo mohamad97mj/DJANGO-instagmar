@@ -28,47 +28,51 @@
 
 <div class="bg-light full-size">
     <!--    body-container-->
-    <div class="bg-light border-bottom border-secondary full-width center-block" id="header"
-         style="top: 0; height: 50px; position:fixed">
+    <div class="bg-light border-bottom border-secondary full-width center-content" id=""
+         style="height: 50px;top: 0; left:0px; right:0px; position:absolute; overflow: hidden">
         <!--        header-->
-        <div class="full-height center-content" style="line-height: 50px; text-align:center;">
-            {% block username %}{% endblock %}
-        </div>
+        {% block header %}
+        {% endblock %}
+
     </div>
 
-    <div style="height: 100vh;">
+    <div class="center-content" style="position: absolute;left:0px; right:0px; top: 50px; bottom: 50px;">
 
-        {% block content %}username{% endblock %}
+                {% block content %}{% endblock %}
 
     </div>
 
 
     <div class="bg-light border-top border-secondary full-width center-content"
-         style="position:fixed; bottom: 0; margin: 0; height: 50px;">
+         style="position:absolute; bottom: 0;left:0px; right:0px; height: 50px; overflow: hidden">
         <!--        footer-->
         <div class="row" style="width: 710px">
             <a class="col center-content" href="{% url 'instagmar_app:postsview' %}">
                 <div class="center-content" style="width: 30px; height:30px;">
-                    <img src="{% static 'instagmar_app/images/home_images/posts.PNG' %}">
+                    {% block posts_icon %}
+                    <img class="full-size" src="{% static 'instagmar_app/images/main/posts.PNG' %}">
+                    {% endblock %}
                 </div>
             </a>
 
             <!--            <div class="col center-content">-->
-            <!--                <img src="{% static 'instagmar_app/images/home_images/explorer.PNG' %}">-->
+            <!--                <img src="{% static 'instagmar_app/images/main/explorer.PNG' %}">-->
             <!--            </div>-->
 
             <a class="col center-content" href="{% url 'instagmar_app:newpostview' %}">
                 <div class="center-content" style="width: 30px; height: 30px;">
-                    <img src="{% static 'instagmar_app/images/home_images/newpost.PNG' %}">
+                    <img class="full-size" src="{% static 'instagmar_app/images/main/newpost.PNG' %}">
                 </div>
             </a>
 
             <!--            <div class="col center-content">-->
-            <!--                <img src="{% static 'instagmar_app/images/home_images/activity.PNG' %}">-->
+            <!--                <img src="{% static 'instagmar_app/images/main/activity.PNG' %}">-->
             <!--            </div>-->
             <a class="col center-content" href="{% url 'instagmar_app:mainview'%}">
                 <div class="center-content" style="width: 30px; height:30px;">
-                    <img src="{% static 'instagmar_app/images/home_images/home.PNG' %}">
+                    {% block home_icon %}
+                    <img class="full-size" src="{% static 'instagmar_app/images/main/home.PNG' %}">
+                    {% endblock %}
                 </div>
             </a>
         </div>

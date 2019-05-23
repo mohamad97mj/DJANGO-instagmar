@@ -16,15 +16,16 @@
 
 <body>
 
-<div class="bg-light" style="position: absolute; width: 100%; height:100%;">
-    <div class="center-block" style="width: 350px; height:650px; margin-top: 25px;">
-        <div class="bg-white border" style="height:365px;">
+<div class="full-size center-content" style="vertical-align: center">
+    <div class=""
+         style="width: 350px; height:500px; position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+        <div class="bg-white border full-width" style="height: 350px">
             <div class="bg-white" style="height:100px;">
-                <img src="{% static 'instagmar_app/images/global_icons/app-name.PNG' %}"
+                <img src="{% static 'instagmar_app/images/global/app-name.PNG' %}"
                      class="bg-white" style="width:100%; height:85px; padding:0 65px">
             </div>
 
-            <div style="padding: 0 35px;">
+            <div style="height: 150px; padding: 0 35px;">
 
                 <form class="bg-white" enctype="multipart/form-data" method="post">
 
@@ -44,9 +45,10 @@
             </div>
         </div>
 
-        <div class="border bg-white" style="margin-top: 10px; height:65px;">
+        <div class="border bg-white full-width" style="margin-top: 10px; height:65px;">
 
-            <pre style="border:none; padding:20px 0;"><span class="text-muted">          Don't have account?</span><a href="{% url 'instagmar_app:signupview' %}"><b>Sign up</b></a></pre>
+            <pre style="border:none; padding:20px 0;"><span class="text-muted">          Don't have account?</span><a
+                    href="{% url 'instagmar_app:signupview' %}"><b>Sign up</b></a></pre>
         </div>
 
     </div>

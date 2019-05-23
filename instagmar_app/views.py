@@ -1,13 +1,19 @@
+from itertools import chain
+
 from django.shortcuts import render
 from . import forms
 from . import models
 
 from django.utils import timezone
-
+from operator import attrgetter
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
+
+
+def index(request):
+    return render(request, 'instagmar_app/chatindex.html', {})
 
 
 def signupview(request):
@@ -41,7 +47,7 @@ def getthisuser(request):
 @login_required
 def mainview(request):
     this_user = getthisuser(request)
-    post_set = this_user.post_set.order_by('date')
+    post_set = this_user.post_set.order_by('datetime')
     context = {'this_user': this_user, 'post_set': post_set}
     return render(request, 'instagmar_app/instagmar_page.html', context=context)
 
@@ -91,7 +97,16 @@ def logoutview(request):
 @login_required
 def postsview(request):
     this_user = getthisuser(request)
-    context = {'this_user': this_user}
+    post_list = this_user.post_set.all()
+
+    for following in this_user.followings.all():
+            post_list = sorted(chain(post_list.all(), following.post_set.all()), key=attrgetter('datetime'))
+
+    print("dates are:")
+    for post in post_list:
+        print(post.datetime)
+
+    context = {'this_user': this_user, 'post_list': post_list}
     return render(request, 'instagmar_app/posts_page.html', context=context)
 
 
@@ -101,7 +116,7 @@ def newpostview(request):
         this_user = getthisuser(request)
         content = request.FILES['content']
         caption = request.POST['caption']
-        newpost = models.Post(user=this_user, content=content, caption=caption, date=timezone.now())
+        newpost = models.Post(user=this_user, content=content, caption=caption)
         newpost.save()
 
         return HttpResponseRedirect(reverse('instagmar_app:mainview'))

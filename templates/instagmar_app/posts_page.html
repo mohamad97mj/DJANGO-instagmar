@@ -1,18 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "instagmar_app/base.html" %}
+{% load staticfiles %}
+{% block title %}home{% endblock %}
+{% block posts_icon %}<img class="full-size" style="width: 35px" src="{% static 'instagmar_app/images/main/posts_active.PNG' %}">{% endblock %}
 
-<div>hello</div>
+{% block header %}
+<div class="full-height row" style="width: 600px;">
+    <div class="col d-flex">
+        <img class="full-size p-2" style="height: 45px; width: 45px;"
+             src="{% static 'instagmar_app/images/posts/logo.PNG' %}">
+    </div>
+    <div class="col center-content">
+        <img class="full-size center-block" style="height: 50px; width: 120px;"
+             src="{% static 'instagmar_app/images/global/app-name-dark.PNG' %}">
+    </div>
+    <div class="col d-flex">
+        <div class="ml-auto">
+            <img class="full-size" style="height: 40px; width: 40px; padding-top: 7px;"
+                 src="{% static 'instagmar_app/images/posts/refresh.PNG' %}">
+            <img class="full-size" style="height: 40px; width: 40px; padding-top: 7px;"
+                 src="{% static 'instagmar_app/images/posts/direct.PNG' %}">
+        </div>
+    </div>
+</div>
+{% endblock %}
 
-<div>{{this_user.username}}</div>
+{% block content %}
+<div class="full-size bg-light" style="">
+    <div class=" full-size" style="">
+        <div class="full-size row" style="overflow: auto; padding-top: 75px;">
+            {% for post in post_list %}
+            <div class="center-content col-12" style="height: 960px; margin-bottom: 75px;">
+                <div class="full-height border bg-white" ; style="width:600px; ">
+                    <div class="" full-width style="height: 60px">{{post.user}}</div>
+                    <div class="full-width" style="height: 600px;">
+                        <img class="full-size" src="{{ post.content.url }}">
+                    </div>
+                    <div class="full-width d-flex flex-flow" style="height: 50px; flow:left">
+                        <div class="p-2" style="width: 50px; height: 50px"><img class="full-size"
+                                                                                src="{% static 'instagmar_app/images/posts/like.PNG' %}">
+                        </div>
+                        <div class="p-2" style="width: 50px; height: 50px"><img class="full-size"
+                                                                                src="{% static 'instagmar_app/images/posts/comment.PNG' %}">
+                        </div>
+                        <div class="p-2" style="width: 50px; height: 50px"><img class="full-size"
+                                                                                src="{% static 'instagmar_app/images/posts/direct-white.PNG' %}">
+                        </div>
+                    </div>
 
-{% for following in this_user.followings.all %}
-<div class="bg-warning">{{ following.username }}</div>
-{% endfor %}
+                    <div class="full-width" style="height: 40px; margin-left: 15px;">{{post.like_set.all|length}}<b
+                            style="margin-left: 5px">likes</b></div>
+                    <div class="full-width" style="height: 60px; margin-left: 15px;">{{post.caption}}</div>
+                    <div class="full-width" style="height: 150px; margin-left: 15px;">{{ post.comment_set.all }}</div>
+                </div>
+            </div>
+            {% endfor %}
 
-</body>
-</html>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
